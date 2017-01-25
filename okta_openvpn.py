@@ -93,7 +93,7 @@ class PublicKeyPinsetConnectionPool(urllib3.HTTPSConnectionPool):
             raise PinError("Public Key not found in pinset!")
 
 
-class OktaAPIAuth:
+class OktaAPIAuth(object):
     def __init__(self, okta_url, okta_token,
                  username, password, client_ipaddr,
                  allow_insecure_auth=False, assert_pinset=okta_pinset):
@@ -223,7 +223,7 @@ class OktaAPIAuth:
             return False
 
 
-class OktaOpenVPNValidator:
+class OktaOpenVPNValidator(object):
     def __init__(self):
         self.cls = OktaAPIAuth
         self.username_trusted = False
