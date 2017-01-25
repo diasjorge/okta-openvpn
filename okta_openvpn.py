@@ -291,7 +291,7 @@ class OktaOpenVPNValidator(object):
         #
         #   Meaning, if self.common_name is NOT set, but self.username IS,
         #   then self.username_trusted will be False
-        if (username is not None):
+        if username is not None:
             self.username_trusted = True
         else:
             # This is set according to what the VPN client has sent us
