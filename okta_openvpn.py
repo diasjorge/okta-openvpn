@@ -96,7 +96,7 @@ class PublicKeyPinsetConnectionPool(urllib3.HTTPSConnectionPool):
 class OktaAPIAuth(object):
     def __init__(self, okta_url, okta_token,
                  username, password, client_ipaddr,
-                 allow_insecure_auth=False, assert_pinset=okta_pinset):
+                 allow_insecure_auth=False, assert_pinset=None):
         passcode_len = 6
         self.okta_url = None
         self.okta_token = okta_token
@@ -105,6 +105,8 @@ class OktaAPIAuth(object):
         self.client_ipaddr = client_ipaddr
         self.passcode = None
         self.okta_urlparse = urlparse.urlparse(okta_url)
+        if assert_pinset is None:
+            assert_pinset = okta_pinset
         url_new = (self.okta_urlparse.scheme,
                    self.okta_urlparse.netloc,
                    '', '', '', '')
